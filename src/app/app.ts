@@ -5,6 +5,7 @@ import { MetricsComponent } from './components/metrics/metrics';
 import { AboutComponent } from './components/about/about';
 import { SkillsComponent } from './components/skills/skills';
 import { ExperienceComponent } from './components/experience/experience';
+import { WorkflowComponent } from './components/workflow/workflow';
 import { ProjectsComponent } from './components/projects/projects';
 import { ArchitectureComponent } from './components/architecture/architecture';
 import { EducationComponent } from './components/education/education';
@@ -21,6 +22,7 @@ import { TerminalComponent } from './components/terminal/terminal';
     AboutComponent,
     SkillsComponent,
     ExperienceComponent,
+    WorkflowComponent,
     ProjectsComponent,
     ArchitectureComponent,
     EducationComponent,

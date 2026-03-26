@@ -1,0 +1,67 @@
+<section class="section workflow-section" id="workflow" #sectionRef>
+  <div class="container">
+    <h2 class="section-title">
+      <span class="section-number">04.</span> How I Lead
+    </h2>
+    <p class="workflow-subtitle">
+      From feature request to production — the delivery pipeline I drive as Tech Lead.
+    </p>
+
+    <!-- Pipeline -->
+    <div class="pipeline" [class.visible]="isVisible()">
+      <!-- Connector line -->
+      <div class="pipeline-line"></div>
+
+      @for (phase of phases; track phase.id; let i = $index) {
+        <div
+          class="phase-card"
+          [class.active]="activePhase() === phase.id"
+          [class.visible]="isVisible()"
+          [style.--delay]="(i * 0.12) + 's'"
+          [style.--accent]="phase.color"
+          (click)="togglePhase(phase.id)"
+        >
+          <!-- Step number on the pipeline line -->
+          <div class="phase-step">
+            <div class="step-dot">
+              <i [class]="phase.icon"></i>
+            </div>
+            @if (i < phases.length - 1) {
+              <div class="step-arrow">
+                <i class="fas fa-chevron-right"></i>
+              </div>
+            }
+          </div>
+
+          <!-- Card content -->
+          <div class="phase-content">
+            <div class="phase-header">
+              <h4>{{ phase.title }}</h4>
+              <span class="phase-freq">{{ phase.frequency }}</span>
+            </div>
+            <p class="phase-desc">{{ phase.description }}</p>
+
+            <!-- Expandable tasks -->
+            @if (activePhase() === phase.id) {
+              <ul class="phase-tasks">
+                @for (task of phase.tasks; track task) {
+                  <li>
+                    <i class="fas fa-check"></i>
+                    {{ task }}
+                  </li>
+                }
+              </ul>
+            }
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Bottom tagline -->
+    <p class="workflow-tagline">
+      <i class="fas fa-quote-left"></i>
+      I don't just write code — I own the feature lifecycle end-to-end.
+      <i class="fas fa-quote-right"></i>
+    </p>
+  </div>
+</section>
