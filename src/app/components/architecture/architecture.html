@@ -1,0 +1,109 @@
+<section class="section architecture-section" id="architecture">
+  <div class="container">
+    <h2 class="section-title" data-number="05">Live Architecture</h2>
+    <p class="section-subtitle">
+      Interactive system design of the event-driven payment platform I architected at Worldline — hover nodes to explore.
+    </p>
+
+    <!-- Metrics Bar -->
+    <div class="metrics-bar">
+      @for (m of metrics; track m.label) {
+        <div class="metric-card">
+          <i [class]="m.icon"></i>
+          <span class="metric-value">{{ m.value }}</span>
+          <span class="metric-label">{{ m.label }}</span>
+        </div>
+      }
+    </div>
+
+    <!-- Layer Filters -->
+    <div class="layer-filters">
+      @for (layer of layers; track layer.id) {
+        <button
+          class="layer-btn"
+          [class.active]="activeLayer() === layer.id"
+          (click)="setActiveLayer(layer.id)">
+          <i [class]="layer.icon"></i>
+          {{ layer.label }}
+        </button>
+      }
+    </div>
+
+    <!-- Diagram Canvas -->
+    <div class="diagram-wrapper">
+      <svg class="connections-svg" viewBox="0 0 570 600" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#64ffda" opacity="0.6" />
+          </marker>
+          @for (conn of connections; track conn.from + conn.to) {
+            <linearGradient [attr.id]="'grad-' + conn.from + '-' + conn.to" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" [attr.stop-color]="conn.color" stop-opacity="0.8" />
+              <stop offset="100%" [attr.stop-color]="conn.color" stop-opacity="0.3" />
+            </linearGradient>
+          }
+        </defs>
+        @for (conn of connections; track conn.from + conn.to) {
+          @if (isConnectionVisible(conn)) {
+            <line
+              class="connection-line"
+              [class.animated]="conn.animated"
+              [attr.x1]="getNodeCenter(conn.from).x"
+              [attr.y1]="getNodeCenter(conn.from).y"
+              [attr.x2]="getNodeCenter(conn.to).x"
+              [attr.y2]="getNodeCenter(conn.to).y"
+              [attr.stroke]="'url(#grad-' + conn.from + '-' + conn.to + ')'"
+              stroke-width="2"
+              marker-end="url(#arrowhead)"
+              fill="none"
+            />
+          }
+        }
+      </svg>
+
+      <div class="nodes-layer">
+        @for (node of nodes; track node.id) {
+          @if (isNodeVisible(node)) {
+            <div
+              class="arch-node"
+              [class.active]="activeNode()?.id === node.id"
+              [style.left.px]="node.x"
+              [style.top.px]="node.y"
+              [style.width.px]="node.width"
+              [style.height.px]="node.height"
+              [style.--node-color]="node.color"
+              (mouseenter)="setActiveNode(node)"
+              (mouseleave)="setActiveNode(null)"
+              (click)="setActiveNode(activeNode()?.id === node.id ? null : node)"
+            >
+              <i [class]="node.icon" class="node-icon"></i>
+              <span class="node-label">{{ node.label }}</span>
+              <div class="node-pulse"></div>
+            </div>
+          }
+        }
+      </div>
+
+      <!-- Info Panel -->
+      @if (activeNode(); as node) {
+        <div class="info-panel" [style.--node-color]="node.color">
+          <div class="info-header">
+            <i [class]="node.icon"></i>
+            <div>
+              <h4>{{ node.label }}</h4>
+              <span class="info-tech">{{ node.tech }}</span>
+            </div>
+          </div>
+          <p class="info-detail">{{ node.detail }}</p>
+        </div>
+      }
+    </div>
+
+    <!-- Legend -->
+    <div class="legend">
+      <span class="legend-item"><span class="legend-line animated"></span> Animated = live data flow</span>
+      <span class="legend-item"><span class="legend-line"></span> Static = config / deploy</span>
+      <span class="legend-item hint"><i class="fas fa-hand-pointer"></i> Hover or tap a node for details</span>
+    </div>
+  </div>
+</section>

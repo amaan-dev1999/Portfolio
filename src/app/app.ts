@@ -5,6 +5,7 @@ import { AboutComponent } from './components/about/about';
 import { SkillsComponent } from './components/skills/skills';
 import { ExperienceComponent } from './components/experience/experience';
 import { ProjectsComponent } from './components/projects/projects';
+import { ArchitectureComponent } from './components/architecture/architecture';
 import { EducationComponent } from './components/education/education';
 import { ContactComponent } from './components/contact/contact';
 import { TerminalComponent } from './components/terminal/terminal';
@@ -19,6 +20,7 @@ import { TerminalComponent } from './components/terminal/terminal';
     SkillsComponent,
     ExperienceComponent,
     ProjectsComponent,
+    ArchitectureComponent,
     EducationComponent,
     TerminalComponent,
     ContactComponent,
