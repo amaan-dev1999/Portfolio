@@ -7,6 +7,7 @@ import { SkillsComponent } from './components/skills/skills';
 import { ExperienceComponent } from './components/experience/experience';
 import { WorkflowComponent } from './components/workflow/workflow';
 import { ProjectsComponent } from './components/projects/projects';
+import { TestimonialsComponent } from './components/testimonials/testimonials';
 import { ArchitectureComponent } from './components/architecture/architecture';
 import { EducationComponent } from './components/education/education';
 import { ContactComponent } from './components/contact/contact';
@@ -24,6 +25,7 @@ import { TerminalComponent } from './components/terminal/terminal';
     ExperienceComponent,
     WorkflowComponent,
     ProjectsComponent,
+    TestimonialsComponent,
     ArchitectureComponent,
     EducationComponent,
     TerminalComponent,

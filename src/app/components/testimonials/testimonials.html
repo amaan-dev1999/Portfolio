@@ -1,0 +1,58 @@
+<section class="section testimonials-section" id="testimonials">
+  <div class="container">
+    <h2 class="section-title">
+      <span class="section-number">06.</span> What Leaders Say
+    </h2>
+
+    <div class="carousel">
+      <!-- Quote card -->
+      @for (t of testimonials; track t.name; let i = $index) {
+        <div class="quote-card" [class.active]="activeIndex() === i">
+          <!-- Highlight badge -->
+          <div class="highlight-badge">
+            <i class="fas fa-award"></i>
+            {{ t.highlight }}
+          </div>
+
+          <!-- Quote -->
+          <blockquote>
+            <i class="fas fa-quote-left quote-icon"></i>
+            <p>{{ t.quote }}</p>
+          </blockquote>
+
+          <!-- Author -->
+          <div class="author">
+            <div class="author-avatar">
+              {{ t.name.charAt(0) }}
+            </div>
+            <div class="author-info">
+              <span class="author-name">{{ t.name }}</span>
+              <span class="author-role">{{ t.role }}</span>
+            </div>
+          </div>
+        </div>
+      }
+
+      <!-- Controls -->
+      <div class="carousel-controls">
+        <button class="carousel-btn" (click)="prev()">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+
+        <div class="carousel-dots">
+          @for (t of testimonials; track t.name; let i = $index) {
+            <button
+              class="dot"
+              [class.active]="activeIndex() === i"
+              (click)="goTo(i)"
+            ></button>
+          }
+        </div>
+
+        <button class="carousel-btn" (click)="next()">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
