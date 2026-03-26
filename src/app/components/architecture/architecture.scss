@@ -263,11 +263,22 @@
   &:hover,
   &.active {
     border-color: var(--node-color);
-    transform: scale(1.06);
     box-shadow: 0 0 20px color-mix(in srgb, var(--node-color) 25%, transparent);
     z-index: 5;
 
     .node-label { color: #fff; }
+  }
+
+  &.pinned {
+    border-color: var(--node-color);
+    box-shadow: 0 0 24px color-mix(in srgb, var(--node-color) 35%, transparent);
+    z-index: 6;
+
+    .node-pulse {
+      background: var(--node-color);
+      animation: none;
+      opacity: 1;
+    }
   }
 }
 
@@ -319,6 +330,10 @@
     font-size: 0.85rem;
     line-height: 1.5;
     margin: 0;
+  }
+
+  &.pinned {
+    border-color: color-mix(in srgb, var(--node-color) 60%, transparent);
   }
 }
 

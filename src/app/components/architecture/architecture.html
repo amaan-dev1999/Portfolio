@@ -43,7 +43,7 @@
     </div>
 
     <!-- Diagram Canvas -->
-    <div class="diagram-wrapper">
+    <div class="diagram-wrapper" (click)="pinnedNode.set(null)">
       <svg class="connections-svg" viewBox="0 0 570 600" preserveAspectRatio="xMidYMid meet">
         <defs>
           <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
@@ -79,15 +79,16 @@
           @if (isNodeVisible(node)) {
             <div
               class="arch-node"
-              [class.active]="activeNode()?.id === node.id"
+              [class.active]="activeNode?.id === node.id"
+              [class.pinned]="pinnedNode()?.id === node.id"
               [style.left.px]="node.x"
               [style.top.px]="node.y"
               [style.width.px]="node.width"
               [style.height.px]="node.height"
               [style.--node-color]="node.color"
-              (mouseenter)="setActiveNode(node)"
-              (mouseleave)="setActiveNode(null)"
-              (click)="setActiveNode(activeNode()?.id === node.id ? null : node)"
+              (mouseenter)="onNodeHover(node)"
+              (mouseleave)="onNodeHover(null)"
+              (click)="onNodeClick(node); $event.stopPropagation()"
             >
               <i [class]="node.icon" class="node-icon"></i>
               <span class="node-label">{{ node.label }}</span>
@@ -98,8 +99,8 @@
       </div>
 
       <!-- Info Panel -->
-      @if (activeNode(); as node) {
-        <div class="info-panel" [style.--node-color]="node.color">
+      @if (activeNode; as node) {
+        <div class="info-panel" [class.pinned]="pinnedNode() !== null" [style.--node-color]="node.color">
           <div class="info-header">
             <i [class]="node.icon"></i>
             <div>

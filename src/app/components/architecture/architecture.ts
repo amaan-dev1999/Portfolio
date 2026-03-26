@@ -32,13 +32,19 @@ interface ArchConnection {
 })
 export class ArchitectureComponent {
   isOpen = signal(false);
-  activeNode = signal<ArchNode | null>(null);
+  pinnedNode = signal<ArchNode | null>(null);
+  hoveredNode = signal<ArchNode | null>(null);
   activeLayer = signal<string>('all');
+
+  get activeNode(): ArchNode | null {
+    return this.pinnedNode() ?? this.hoveredNode();
+  }
 
   open() {
     this.isOpen.set(true);
     this.activeLayer.set('all');
-    this.activeNode.set(null);
+    this.pinnedNode.set(null);
+    this.hoveredNode.set(null);
   }
 
   close() {
@@ -191,13 +197,18 @@ export class ArchitectureComponent {
     { label: 'Query Speed', value: '+65%', icon: 'fas fa-database' },
   ];
 
-  setActiveNode(node: ArchNode | null) {
-    this.activeNode.set(node);
+  onNodeHover(node: ArchNode | null) {
+    this.hoveredNode.set(node);
+  }
+
+  onNodeClick(node: ArchNode) {
+    this.pinnedNode.set(this.pinnedNode()?.id === node.id ? null : node);
   }
 
   setActiveLayer(layerId: string) {
     this.activeLayer.set(layerId);
-    this.activeNode.set(null);
+    this.pinnedNode.set(null);
+    this.hoveredNode.set(null);
   }
 
   isNodeVisible(node: ArchNode): boolean {
