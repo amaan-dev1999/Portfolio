@@ -1,9 +1,22 @@
-<section class="section architecture-section" id="architecture">
-  <div class="container">
-    <h2 class="section-title" data-number="05">Live Architecture</h2>
-    <p class="section-subtitle">
-      Interactive system design of the event-driven payment platform I architected at Worldline — hover nodes to explore.
-    </p>
+@if (isOpen()) {
+  <!-- Backdrop -->
+  <div class="arch-overlay" (click)="close()"></div>
+
+  <!-- Modal Panel -->
+  <div class="arch-modal">
+    <!-- Header -->
+    <div class="arch-header">
+      <div class="arch-title">
+        <i class="fas fa-project-diagram"></i>
+        <div>
+          <h3>Live Architecture</h3>
+          <span class="arch-subtitle">Event-Driven Payment Platform — Worldline</span>
+        </div>
+      </div>
+      <button class="arch-close" (click)="close()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
 
     <!-- Metrics Bar -->
     <div class="metrics-bar">
@@ -104,6 +117,7 @@
       <span class="legend-item"><span class="legend-line animated"></span> Animated = live data flow</span>
       <span class="legend-item"><span class="legend-line"></span> Static = config / deploy</span>
       <span class="legend-item hint"><i class="fas fa-hand-pointer"></i> Hover or tap a node for details</span>
+      <span class="legend-item hint"><i class="fas fa-keyboard"></i> Esc to close</span>
     </div>
   </div>
-</section>
+}

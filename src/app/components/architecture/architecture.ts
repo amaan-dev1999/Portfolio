@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, HostListener, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 interface ArchNode {
@@ -31,8 +31,24 @@ interface ArchConnection {
   styleUrl: './architecture.scss',
 })
 export class ArchitectureComponent {
+  isOpen = signal(false);
   activeNode = signal<ArchNode | null>(null);
   activeLayer = signal<string>('all');
+
+  open() {
+    this.isOpen.set(true);
+    this.activeLayer.set('all');
+    this.activeNode.set(null);
+  }
+
+  close() {
+    this.isOpen.set(false);
+  }
+
+  @HostListener('document:keydown.escape')
+  onEsc() {
+    if (this.isOpen()) this.close();
+  }
 
   layers = [
     { id: 'all', label: 'Full System', icon: 'fas fa-layer-group' },

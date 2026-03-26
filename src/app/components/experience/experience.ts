@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, output, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 interface Experience {
@@ -21,6 +21,7 @@ interface Experience {
 })
 export class ExperienceComponent {
   activeIndex = signal(0);
+  openArchitecture = output<void>();
 
   experiences: Experience[] = [
     {

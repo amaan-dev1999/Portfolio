@@ -45,6 +45,14 @@
             <span class="tech-tag">{{ tech }}</span>
           }
         </div>
+
+        @if (activeIndex() === 1) {
+          <button class="arch-cta" (click)="openArchitecture.emit()">
+            <i class="fas fa-project-diagram"></i>
+            View System Architecture
+            <i class="fas fa-arrow-right"></i>
+          </button>
+        }
       </div>
     </div>
   </div>

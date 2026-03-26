@@ -139,6 +139,34 @@
   font-weight: 500;
 }
 
+// Architecture CTA
+.arch-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+  padding: 0.65rem 1.4rem;
+  background: rgba(100, 255, 218, 0.06);
+  border: 1px solid rgba(100, 255, 218, 0.25);
+  border-radius: 8px;
+  color: #64ffda;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  i:first-child { font-size: 1rem; }
+  i:last-child { font-size: 0.75rem; transition: transform 0.3s ease; }
+
+  &:hover {
+    background: rgba(100, 255, 218, 0.12);
+    border-color: #64ffda;
+    box-shadow: 0 0 16px rgba(100, 255, 218, 0.15);
+
+    i:last-child { transform: translateX(3px); }
+  }
+}
+
 @media (max-width: 768px) {
   .experience-layout {
     grid-template-columns: 1fr;
