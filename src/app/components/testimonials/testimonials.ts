@@ -50,31 +50,31 @@ export class TestimonialsComponent implements OnInit, OnDestroy {
 
   next() {
     this.activeIndex.set((this.activeIndex() + 1) % this.testimonials.length);
-    this.restartAutoRotate();
+    this.stopAutoRotate();
   }
 
   prev() {
     this.activeIndex.set(
       (this.activeIndex() - 1 + this.testimonials.length) % this.testimonials.length
     );
-    this.restartAutoRotate();
+    this.stopAutoRotate();
   }
 
   goTo(index: number) {
     this.activeIndex.set(index);
-    this.restartAutoRotate();
+    this.stopAutoRotate();
   }
 
   private startAutoRotate() {
-    this.timer = setInterval(() => this.next(), 8000);
+    this.timer = setInterval(() => {
+      this.activeIndex.set((this.activeIndex() + 1) % this.testimonials.length);
+    }, 8000);
   }
 
   private stopAutoRotate() {
-    if (this.timer) clearInterval(this.timer);
-  }
-
-  private restartAutoRotate() {
-    this.stopAutoRotate();
-    this.startAutoRotate();
+    if (this.timer) {
+      clearInterval(this.timer);
+      this.timer = null;
+    }
   }
 }
