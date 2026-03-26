@@ -23,7 +23,7 @@ export class ContactComponent {
     { icon: 'fas fa-envelope', label: 'Email', value: 'amaan.ahmadkhan1999@gmail.com', href: 'mailto:amaan.ahmadkhan1999@gmail.com' },
     { icon: 'fas fa-phone', label: 'Phone', value: '+91-9198557381', href: 'tel:+919198557381' },
     { icon: 'fas fa-map-marker-alt', label: 'Location', value: 'Mumbai, Maharashtra, India', href: '' },
-    { icon: 'fab fa-linkedin-in', label: 'LinkedIn', value: 'linkedin.com/in/amaan', href: 'https://linkedin.com/in/amaan' },
+    { icon: 'fab fa-linkedin-in', label: 'LinkedIn', value: 'linkedin.com/in/amaan-ahmad-khan', href: 'https://www.linkedin.com/in/amaan-ahmad-khan' },
   ];
 
   onSubmit() {
