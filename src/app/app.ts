@@ -7,6 +7,7 @@ import { ExperienceComponent } from './components/experience/experience';
 import { ProjectsComponent } from './components/projects/projects';
 import { EducationComponent } from './components/education/education';
 import { ContactComponent } from './components/contact/contact';
+import { TerminalComponent } from './components/terminal/terminal';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +20,7 @@ import { ContactComponent } from './components/contact/contact';
     ExperienceComponent,
     ProjectsComponent,
     EducationComponent,
+    TerminalComponent,
     ContactComponent,
   ],
   templateUrl: './app.html',

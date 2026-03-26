@@ -1,0 +1,246 @@
+.terminal-subtitle {
+  color: #8892b0;
+  text-align: center;
+  margin: -1.5rem auto 2.5rem;
+  font-size: 1rem;
+}
+
+.terminal-window {
+  max-width: 850px;
+  margin: 0 auto;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 25px 80px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(100, 255, 218, 0.03);
+  cursor: text;
+}
+
+// Title Bar
+.terminal-titlebar {
+  background: #1a1a2e;
+  padding: 0.6rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.terminal-buttons {
+  display: flex;
+  gap: 8px;
+
+  span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  .btn-close { background: #ff5f56; }
+  .btn-minimize { background: #ffbd2e; }
+  .btn-maximize { background: #27c93f; }
+}
+
+.terminal-title {
+  color: #6b7280;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.75rem;
+  flex: 1;
+  text-align: center;
+}
+
+.terminal-titlebar-spacer {
+  width: 52px; // balance the buttons
+}
+
+// Terminal Body
+.terminal-body {
+  background: #0d0d1a;
+  padding: 1.2rem;
+  min-height: 400px;
+  max-height: 500px;
+  overflow-y: auto;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.82rem;
+  line-height: 1.6;
+
+  // Scrollbar
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #1e1e3a;
+    border-radius: 3px;
+  }
+}
+
+// Lines
+.terminal-line {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 2px;
+  word-break: break-all;
+}
+
+// Prompt styling
+.prompt {
+  white-space: nowrap;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+.prompt-user {
+  color: #64ffda;
+  font-weight: 600;
+}
+
+.prompt-at {
+  color: #6b7280;
+}
+
+.prompt-host {
+  color: #a78bfa;
+}
+
+.prompt-colon {
+  color: #6b7280;
+}
+
+.prompt-path {
+  color: #60a5fa;
+}
+
+.prompt-dollar {
+  color: #6b7280;
+  margin-left: 4px;
+}
+
+.command-text {
+  color: #e2e8f0;
+}
+
+// Output types
+.output-text {
+  margin: 0;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.82rem;
+  white-space: pre;
+  line-height: 1.5;
+}
+
+.line-output .output-text {
+  color: #b0b0c8;
+}
+
+.line-success .output-text {
+  color: #64ffda;
+}
+
+.line-error .output-text {
+  color: #ff6b6b;
+}
+
+.line-ascii .output-text {
+  color: #64ffda;
+  opacity: 0.8;
+}
+
+.line-table .output-text {
+  color: #a5b4fc;
+}
+
+// Input
+.input-line {
+  display: flex;
+  align-items: center;
+}
+
+.terminal-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #e2e8f0;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.82rem;
+  flex: 1;
+  caret-color: #64ffda;
+  line-height: 1.6;
+
+  &::placeholder {
+    color: #3a3a5c;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+
+// Hint bar
+.terminal-hint {
+  max-width: 850px;
+  margin: 1rem auto 0;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+
+  span {
+    color: #6b7280;
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  kbd {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    padding: 0.1rem 0.45rem;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.7rem;
+    color: #64ffda;
+  }
+}
+
+// Animation for new lines appearing
+.terminal-line {
+  animation: lineAppear 0.15s ease;
+}
+
+@keyframes lineAppear {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .terminal-body {
+    font-size: 0.72rem;
+    min-height: 300px;
+    max-height: 400px;
+    padding: 0.8rem;
+  }
+
+  .output-text {
+    font-size: 0.72rem;
+  }
+
+  .terminal-input {
+    font-size: 0.72rem;
+  }
+
+  .terminal-hint {
+    gap: 1rem;
+  }
+}
