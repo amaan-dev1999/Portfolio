@@ -1,0 +1,51 @@
+<section id="experience" class="experience section">
+  <div class="container">
+    <h2 class="section-title">
+      <span class="section-number">03.</span> Work Experience
+    </h2>
+
+    <div class="experience-layout">
+      <div class="experience-tabs">
+        @for (exp of experiences; track exp.company; let i = $index) {
+          <button
+            class="tab-btn"
+            [class.active]="activeIndex() === i"
+            (click)="setActive(i)"
+          >
+            {{ exp.company }}
+            @if (exp.current) {
+              <span class="current-badge">Current</span>
+            }
+          </button>
+        }
+      </div>
+
+      <div class="experience-content">
+        @let exp = experiences[activeIndex()];
+        <div class="exp-header">
+          <h3 class="exp-title">
+            {{ exp.title }}
+            <span class="exp-company">@ {{ exp.company }}</span>
+          </h3>
+          <div class="exp-meta">
+            <span class="exp-period"><i class="far fa-calendar-alt"></i> {{ exp.period }}</span>
+            <span class="exp-location"><i class="fas fa-map-marker-alt"></i> {{ exp.location }}</span>
+            <span class="exp-domain"><i class="fas fa-industry"></i> {{ exp.domain }}</span>
+          </div>
+        </div>
+
+        <ul class="exp-points">
+          @for (point of exp.points; track $index) {
+            <li>{{ point }}</li>
+          }
+        </ul>
+
+        <div class="exp-tech">
+          @for (tech of exp.technologies; track tech) {
+            <span class="tech-tag">{{ tech }}</span>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

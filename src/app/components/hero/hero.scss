@@ -1,0 +1,195 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 0 2rem;
+  overflow: hidden;
+}
+
+.hero-bg-particles {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(100, 255, 218, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(100, 255, 218, 0.02) 0%, transparent 50%);
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  animation: fadeInUp 1s ease;
+}
+
+.hero-greeting {
+  color: #64ffda;
+  font-family: 'Fira Code', monospace;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.hero-name {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 800;
+  color: #e2e8f0;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+
+.hero-role {
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  color: #8892b0;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+
+  .typed-text {
+    color: #64ffda;
+    font-weight: 600;
+  }
+
+  .cursor {
+    color: #64ffda;
+    animation: blink 1s step-end infinite;
+  }
+}
+
+.hero-description {
+  color: #8892b0;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  max-width: 550px;
+  margin-bottom: 2.5rem;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
+  border-radius: 5px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: #64ffda;
+  color: #0a0a1e;
+
+  &:hover {
+    background: #4fd1b0;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(100, 255, 218, 0.3);
+  }
+}
+
+.btn-outline {
+  border: 1.5px solid #64ffda;
+  color: #64ffda;
+  background: transparent;
+
+  &:hover {
+    background: rgba(100, 255, 218, 0.1);
+    transform: translateY(-2px);
+  }
+}
+
+.hero-social {
+  display: flex;
+  gap: 1.5rem;
+
+  a {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1.5px solid #2d2d52;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #8892b0;
+    text-decoration: none;
+    transition: all 0.3s;
+    font-size: 1.1rem;
+
+    &:hover {
+      color: #64ffda;
+      border-color: #64ffda;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 15px rgba(100, 255, 218, 0.2);
+    }
+  }
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+
+  a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: #8892b0;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+}
+
+.mouse {
+  width: 22px;
+  height: 36px;
+  border: 2px solid #8892b0;
+  border-radius: 12px;
+  position: relative;
+
+  .wheel {
+    width: 3px;
+    height: 8px;
+    background: #64ffda;
+    border-radius: 2px;
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scrollWheel 2s ease infinite;
+  }
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+@keyframes scrollWheel {
+  0% { opacity: 1; top: 6px; }
+  100% { opacity: 0; top: 20px; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

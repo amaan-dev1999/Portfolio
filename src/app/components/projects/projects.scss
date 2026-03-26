@@ -1,0 +1,117 @@
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 2rem;
+}
+
+.project-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: all 0.4s;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    border-color: rgba(100, 255, 218, 0.3);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.project-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.project-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background: rgba(100, 255, 218, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  i {
+    font-size: 1.4rem;
+    color: #64ffda;
+  }
+}
+
+.project-year {
+  font-family: 'Fira Code', monospace;
+  color: #64ffda;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.project-title {
+  color: #e2e8f0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+  transition: color 0.3s;
+
+  .project-card:hover & {
+    color: #64ffda;
+  }
+}
+
+.project-description {
+  flex: 1;
+  margin-bottom: 1.5rem;
+
+  p {
+    color: #8892b0;
+    font-size: 0.88rem;
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.project-impact {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  background: rgba(100, 255, 218, 0.05);
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  border-left: 3px solid #64ffda;
+
+  i {
+    color: #64ffda;
+    font-size: 0.85rem;
+  }
+
+  span {
+    color: #64ffda;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tech-pill {
+  padding: 0.25rem 0.65rem;
+  background: rgba(99, 102, 241, 0.1);
+  color: #a5b4fc;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-family: 'Fira Code', monospace;
+}
+
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}

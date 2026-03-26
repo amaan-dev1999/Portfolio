@@ -1,0 +1,49 @@
+<section id="education" class="education section">
+  <div class="container">
+    <h2 class="section-title">
+      <span class="section-number">05.</span> Education & Certifications
+    </h2>
+
+    <div class="education-grid">
+      <!-- Education Card -->
+      <div class="edu-card main-edu">
+        <div class="edu-icon">
+          <i class="fas fa-graduation-cap"></i>
+        </div>
+        <div class="edu-content">
+          <h3>{{ education.degree }}</h3>
+          <p class="edu-college">{{ education.college }}</p>
+          <div class="edu-meta">
+            <span><i class="far fa-calendar-alt"></i> {{ education.period }}</span>
+            <span><i class="fas fa-map-marker-alt"></i> {{ education.location }}</span>
+          </div>
+          <div class="edu-cgpa">
+            <span class="cgpa-label">CGPA</span>
+            <span class="cgpa-value">{{ education.cgpa }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certifications -->
+      <div class="certs-container">
+        <h3 class="certs-heading">
+          <i class="fas fa-certificate"></i> Certifications & Training
+        </h3>
+        <div class="certs-grid">
+          @for (cert of certifications; track cert.name) {
+            <div class="cert-card">
+              <div class="cert-icon">
+                <i [class]="cert.icon"></i>
+              </div>
+              <div class="cert-info">
+                <h4>{{ cert.name }}</h4>
+                <p>{{ cert.issuer }}</p>
+                <span class="cert-year">{{ cert.year }}</span>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,60 @@
+<section id="about" class="about section">
+  <div class="container">
+    <h2 class="section-title">
+      <span class="section-number">01.</span> About Me
+    </h2>
+
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          Hello! I'm <strong>Amaan Ahmad Khan</strong>, a passionate Software Engineer based in
+          <strong>Mumbai, India</strong>. I specialize in building robust, scalable, and efficient
+          applications that solve real-world problems.
+        </p>
+        <p>
+          My journey in software development started during my engineering studies at
+          <strong>AIKTC College of Engineering</strong>, and since then I've had the privilege of
+          working at <strong>Worldline Global Services</strong> in the financial/payment systems domain
+          and now leading a tech team at <strong>ERGO Technologies & Services</strong> in the insurance domain.
+        </p>
+        <p>
+          I thrive in environments where I can design distributed systems, optimize performance at scale,
+          and deliver high-quality software. From processing <strong>5K+ events/second</strong> with Kafka
+          to achieving <strong>1000× performance improvements</strong> on frontend flows — I love
+          tackling complex engineering challenges.
+        </p>
+
+        <div class="about-tech">
+          <p>Technologies I work with daily:</p>
+          <ul class="tech-list">
+            <li>Java (8–21)</li>
+            <li>Spring Boot / Cloud</li>
+            <li>Angular / React</li>
+            <li>TypeScript</li>
+            <li>AWS / GCP</li>
+            <li>Apache Kafka</li>
+            <li>Docker / Kubernetes</li>
+            <li>PostgreSQL</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="about-image">
+        <div class="image-wrapper">
+          <img src="profile.jpg" alt="Amaan Ahmad Khan" />
+          <div class="image-overlay"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlights">
+      @for (item of highlights; track item.label) {
+        <div class="highlight-card">
+          <i [class]="item.icon"></i>
+          <span class="highlight-value">{{ item.value }}</span>
+          <span class="highlight-label">{{ item.label }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</section>

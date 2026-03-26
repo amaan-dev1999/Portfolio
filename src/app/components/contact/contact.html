@@ -1,0 +1,84 @@
+<section id="contact" class="contact section">
+  <div class="container">
+    <h2 class="section-title">
+      <span class="section-number">06.</span> Get In Touch
+    </h2>
+
+    <p class="contact-subtitle">
+      I'm currently open to new opportunities and collaborations.
+      Whether you have a question, a project idea, or just want to say hi — my inbox is always open!
+    </p>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        @for (info of contactInfo; track info.label) {
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i [class]="info.icon"></i>
+            </div>
+            <div class="contact-detail">
+              <span class="contact-label">{{ info.label }}</span>
+              @if (info.href) {
+                <a [href]="info.href" target="_blank" rel="noopener noreferrer">{{ info.value }}</a>
+              } @else {
+                <span class="contact-value">{{ info.value }}</span>
+              }
+            </div>
+          </div>
+        }
+      </div>
+
+      <form class="contact-form" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+          <div class="form-group">
+            <input type="text" [(ngModel)]="formData.name" name="name" placeholder="Your Name" required />
+          </div>
+          <div class="form-group">
+            <input type="email" [(ngModel)]="formData.email" name="email" placeholder="Your Email" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="text" [(ngModel)]="formData.subject" name="subject" placeholder="Subject" />
+        </div>
+        <div class="form-group">
+          <textarea [(ngModel)]="formData.message" name="message" placeholder="Your Message" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn-submit">
+          @if (submitted()) {
+            <i class="fas fa-check"></i> Message Sent!
+          } @else {
+            <i class="fas fa-paper-plane"></i> Send Message
+          }
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <span class="footer-logo">
+          <span class="bracket">&lt;</span>Amaan<span class="bracket">/&gt;</span>
+        </span>
+        <p>Building scalable solutions, one line at a time.</p>
+      </div>
+      <div class="footer-social">
+        <a href="https://linkedin.com/in/amaan" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://github.com/amaan" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="mailto:amaan.ahmadkhan1999&#64;gmail.com" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Designed & Built by <span class="highlight">Amaan Ahmad Khan</span> &copy; 2026</p>
+    </div>
+  </div>
+</footer>

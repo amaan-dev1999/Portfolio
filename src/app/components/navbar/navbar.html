@@ -1,0 +1,30 @@
+<nav [class.scrolled]="isScrolled()" class="navbar">
+  <div class="navbar-container">
+    <a class="logo" href="#home" (click)="scrollTo($event, '#home')">
+      <span class="logo-bracket">&lt;</span>
+      <span class="logo-name">Amaan</span>
+      <span class="logo-bracket">/&gt;</span>
+    </a>
+
+    <ul class="nav-links" [class.active]="isMobileMenuOpen()">
+      @for (link of navLinks; track link.href) {
+        <li>
+          <a [href]="link.href" (click)="scrollTo($event, link.href)">{{ link.label }}</a>
+        </li>
+      }
+      <li class="nav-cta">
+        <a href="#contact" (click)="scrollTo($event, '#contact')" class="btn-hire">Hire Me</a>
+      </li>
+    </ul>
+
+    <button class="hamburger" (click)="toggleMobileMenu()" [class.active]="isMobileMenuOpen()" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+@if (isMobileMenuOpen()) {
+  <div class="mobile-overlay" (click)="closeMobileMenu()"></div>
+}

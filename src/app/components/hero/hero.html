@@ -1,0 +1,42 @@
+<section id="home" class="hero">
+  <div class="hero-bg-particles"></div>
+  <div class="hero-content">
+    <p class="hero-greeting">Hi, my name is</p>
+    <h1 class="hero-name">Amaan Ahmad Khan</h1>
+    <h2 class="hero-role">
+      I'm a <span class="typed-text">{{ displayText() }}</span><span class="cursor">|</span>
+    </h2>
+    <p class="hero-description">
+      Software Engineer with 4+ years of experience building scalable, enterprise-grade
+      applications in Java, Spring Boot, Angular & cloud-native architectures.
+      Currently working as a Tech Lead at ERGO Technologies.
+    </p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary" (click)="scrollTo($event, '#projects')">
+        View My Work <i class="fas fa-arrow-right"></i>
+      </a>
+      <a href="#contact" class="btn btn-outline" (click)="scrollTo($event, '#contact')">
+        Get In Touch
+      </a>
+    </div>
+    <div class="hero-social">
+      <a href="https://linkedin.com/in/amaan" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a href="mailto:amaan.ahmadkhan1999&#64;gmail.com" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://github.com/amaan" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <a href="#about" (click)="scrollTo($event, '#about')">
+      <div class="mouse">
+        <div class="wheel"></div>
+      </div>
+      <span>Scroll Down</span>
+    </a>
+  </div>
+</section>
