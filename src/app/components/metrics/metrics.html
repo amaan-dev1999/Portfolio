@@ -1,0 +1,23 @@
+<div class="metrics-strip" #stripRef>
+  <div class="metrics-inner">
+    <div class="metrics-label">
+      <i class="fas fa-chart-line"></i>
+      <span>Impact</span>
+    </div>
+
+    <div class="metrics-grid">
+      @for (m of metrics; track m.label; let i = $index) {
+        <div class="metric" [style.--accent]="m.color">
+          <div class="metric-icon">
+            <i [class]="m.icon"></i>
+          </div>
+          <div class="metric-body">
+            <span class="metric-value">{{ formatValue(i) }}</span>
+            <span class="metric-name">{{ m.label }}</span>
+          </div>
+          <div class="metric-tooltip">{{ m.description }}</div>
+        </div>
+      }
+    </div>
+  </div>
+</div>

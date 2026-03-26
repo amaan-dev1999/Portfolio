@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavbarComponent } from './components/navbar/navbar';
 import { HeroComponent } from './components/hero/hero';
+import { MetricsComponent } from './components/metrics/metrics';
 import { AboutComponent } from './components/about/about';
 import { SkillsComponent } from './components/skills/skills';
 import { ExperienceComponent } from './components/experience/experience';
@@ -16,6 +17,7 @@ import { TerminalComponent } from './components/terminal/terminal';
   imports: [
     NavbarComponent,
     HeroComponent,
+    MetricsComponent,
     AboutComponent,
     SkillsComponent,
     ExperienceComponent,
