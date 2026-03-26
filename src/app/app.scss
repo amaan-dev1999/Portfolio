@@ -5,3 +5,53 @@
 main {
   overflow: hidden;
 }
+
+// Resume download FAB
+.resume-fab {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.1rem;
+  background: rgba(10, 10, 30, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(100, 255, 218, 0.2);
+  border-radius: 12px;
+  color: #64ffda;
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 600;
+  z-index: 800;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+
+  i {
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover {
+    border-color: #64ffda;
+    background: rgba(100, 255, 218, 0.1);
+    box-shadow: 0 4px 24px rgba(100, 255, 218, 0.15);
+    transform: translateY(-2px);
+
+    i { transform: translateY(2px); }
+  }
+}
+
+@media (max-width: 600px) {
+  .resume-fab {
+    bottom: 1.25rem;
+    left: 1.25rem;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.75rem;
+
+    .resume-fab-label { display: none; }
+
+    i { font-size: 1.1rem; }
+  }
+}
