@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, AfterViewInit, signal } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit, signal, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 interface TerminalLine {
@@ -17,6 +17,7 @@ export class TerminalComponent implements AfterViewInit {
   @ViewChild('terminalInput') terminalInput!: ElementRef<HTMLInputElement>;
   @ViewChild('terminalBody') terminalBody!: ElementRef<HTMLDivElement>;
 
+  isOpen = signal(false);
   lines = signal<TerminalLine[]>([]);
   currentInput = signal('');
   commandHistory: string[] = [];
@@ -51,9 +52,44 @@ export class TerminalComponent implements AfterViewInit {
     neofetch: () => this.cmdNeofetch(),
   };
 
-  ngAfterViewInit() {
-    this.addLines(this.getWelcomeMessage());
-    setTimeout(() => this.focusInput(), 100);
+  private initialized = false;
+
+  ngAfterViewInit() {}
+
+  @HostListener('document:keydown', ['$event'])
+  onGlobalKeyDown(event: KeyboardEvent) {
+    if (event.key === '`' && event.ctrlKey) {
+      event.preventDefault();
+      this.toggle();
+    }
+    if (event.key === 'Escape' && this.isOpen()) {
+      this.close();
+    }
+  }
+
+  toggle() {
+    if (this.isOpen()) {
+      this.close();
+    } else {
+      this.open();
+    }
+  }
+
+  open() {
+    this.isOpen.set(true);
+    if (!this.initialized) {
+      this.initialized = true;
+      setTimeout(() => {
+        this.addLines(this.getWelcomeMessage());
+        this.focusInput();
+      }, 300);
+    } else {
+      setTimeout(() => this.focusInput(), 100);
+    }
+  }
+
+  close() {
+    this.isOpen.set(false);
   }
 
   focusInput() {

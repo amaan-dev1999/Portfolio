@@ -19,7 +19,6 @@ export class NavbarComponent {
     { label: 'Experience', href: '#experience' },
     { label: 'Projects', href: '#projects' },
     { label: 'Education', href: '#education' },
-    { label: 'Terminal', href: '#terminal' },
     { label: 'Contact', href: '#contact' },
   ];
 
